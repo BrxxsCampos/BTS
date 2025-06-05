@@ -107,7 +107,7 @@ const QuizGame = ({
               <div className="mb-6 sm:mb-8">
                 
                 
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-purple-800 mb-6 sm:mb-8 leading-tight sm:leading-relaxed px-2 text-center">✨DESAFIO BTS: Mostre que é uma verdadeira ARMY e ganhe até R$525,00!</h1>
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-purple-800 mb-6 sm:mb-8 leading-tight sm:leading-relaxed px-2 text-center">💜 Você é fã de verdade do BTS?</h1>
                 
                 <div className="bg-purple-50 p-4 sm:p-6 rounded-xl mb-6 sm:mb-8">
                   <p className="text-lg sm:text-xl text-gray-700 mb-3 sm:mb-4">
