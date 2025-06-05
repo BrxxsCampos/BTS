@@ -136,9 +136,9 @@ const QuizGame = ({
         {/* Header */}
         <div className="text-center mb-8 pt-8">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Trophy className="text-yellow-400 w-8 h-8" />
-            <h1 className="text-3xl font-bold text-white">BTS Quiz Challenge</h1>
-            <Star className="text-yellow-400 w-8 h-8" />
+            
+            <h1 className="text-3xl font-bold text-white">💜DESAFIO BTS💜</h1>
+            
           </div>
           <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-full text-xl font-bold inline-block shadow-lg">
             💰 Saldo: R${score},00
