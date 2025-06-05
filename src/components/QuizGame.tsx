@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { CheckCircle, XCircle, Trophy, Star } from 'lucide-react';
+import { CheckCircle, XCircle, Trophy, Star, Play } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 interface Question {
@@ -16,32 +16,44 @@ interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    question: "Qual o nome do líder da banda BTS?",
-    options: ["Jin", "RM", "Suga", "J-Hope"],
-    correctAnswer: 1
+    question: "🟣 Quem é o líder do BTS?",
+    options: ["V", "Jin", "RM", "Jimin"],
+    correctAnswer: 2
   },
   {
     id: 2,
-    question: "Em que ano o BTS estreou?",
+    question: "🟣 Em que ano o BTS estreou?",
     options: ["2012", "2013", "2014", "2015"],
     correctAnswer: 1
   },
   {
     id: 3,
-    question: "Qual o fandom oficial do BTS?",
-    options: ["BLINK", "ARMY", "ONCE", "STAY"],
-    correctAnswer: 1
+    question: "🟣 Qual é o nome oficial do fandom do BTS?",
+    options: ["Lovers", "Blinks", "Army", "Dreamers"],
+    correctAnswer: 2
   },
   {
     id: 4,
-    question: "Qual membro é conhecido como 'Golden Maknae'?",
-    options: ["V", "Jimin", "Jungkook", "Jin"],
+    question: "🟣 Qual integrante é conhecido como 'Golden Maknae'?",
+    options: ["Jimin", "V", "Jungkook", "Jin"],
     correctAnswer: 2
   },
   {
     id: 5,
-    question: "Qual o nome do álbum que contém a música 'Dynamite'?",
-    options: ["Love Yourself: Answer", "Map of the Soul: 7", "BE", "Proof"],
+    question: "🟣 Qual música do BTS tem o clipe totalmente em inglês?",
+    options: ["DNA", "Fake Love", "Dynamite", "Run"],
+    correctAnswer: 2
+  },
+  {
+    id: 6,
+    question: "🟣 Qual desses álbuns contém a faixa 'Butterfly'?",
+    options: ["BE", "Wings", "Map of the Soul: Persona", "Love Yourself: Her"],
+    correctAnswer: 1
+  },
+  {
+    id: 7,
+    question: "🟣 Quantos membros tem o grupo BTS?",
+    options: ["5", "6", "7", "8"],
     correctAnswer: 2
   }
 ];
@@ -51,7 +63,9 @@ const motivationalMessages = [
   "Rumo ao prêmio! 🎯",
   "Mostre que você é um verdadeiro ARMY! 💪",
   "Incrível! Continue assim! ⭐",
-  "Você é um expert em BTS! 🔥"
+  "Você é um expert em BTS! 🔥",
+  "Quase lá! Mantenha o foco! 🚀",
+  "Última pergunta! Vamos nessa! 🏆"
 ];
 
 interface QuizGameProps {
@@ -59,12 +73,17 @@ interface QuizGameProps {
 }
 
 const QuizGame = ({ onComplete }: QuizGameProps) => {
+  const [gameStarted, setGameStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [answered, setAnswered] = useState(false);
+
+  const handleStartGame = () => {
+    setGameStarted(true);
+  };
 
   const handleAnswerSelect = (answerIndex: number) => {
     if (answered) return;
@@ -106,6 +125,51 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
     }
   };
 
+  // Welcome Screen
+  if (!gameStarted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 p-4">
+        <div className="max-w-2xl mx-auto pt-16">
+          <Card className="border-2 border-purple-300 shadow-2xl">
+            <CardContent className="p-12 text-center">
+              <div className="mb-8">
+                <div className="flex items-center justify-center gap-2 mb-6">
+                  <Trophy className="text-yellow-400 w-12 h-12" />
+                  <Star className="text-yellow-400 w-8 h-8" />
+                </div>
+                
+                <h1 className="text-4xl font-bold text-purple-800 mb-8 leading-relaxed">
+                  🎤 Desafio BTS: Mostre que é um verdadeiro ARMY e ganhe até R$525,00!
+                </h1>
+                
+                <div className="bg-purple-50 p-6 rounded-xl mb-8">
+                  <p className="text-xl text-gray-700 mb-4">
+                    Cada pergunta certa vale R$75,00.
+                  </p>
+                  <p className="text-xl text-gray-700 mb-4">
+                    Acerte todas e saque seu saldo via Pix!
+                  </p>
+                  <p className="text-lg text-purple-600 font-semibold">
+                    👉 Toque em COMEÇAR para iniciar o desafio.
+                  </p>
+                </div>
+                
+                <Button
+                  onClick={handleStartGame}
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-12 py-6 text-2xl h-auto shadow-lg transform hover:scale-105 transition-all duration-300"
+                >
+                  <Play className="w-8 h-8 mr-3" />
+                  COMEÇAR AGORA
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
+  // Quiz Game
   const progress = ((currentQuestion + 1) / questions.length) * 100;
   const currentQ = questions[currentQuestion];
 
