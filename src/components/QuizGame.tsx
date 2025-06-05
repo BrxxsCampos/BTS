@@ -128,37 +128,37 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
   // Welcome Screen
   if (!gameStarted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 p-4">
-        <div className="max-w-2xl mx-auto pt-16">
+      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 p-3 sm:p-4">
+        <div className="max-w-2xl mx-auto pt-8 sm:pt-16">
           <Card className="border-2 border-purple-300 shadow-2xl">
-            <CardContent className="p-12 text-center">
-              <div className="mb-8">
-                <div className="flex items-center justify-center gap-2 mb-6">
-                  <Trophy className="text-yellow-400 w-12 h-12" />
-                  <Star className="text-yellow-400 w-8 h-8" />
+            <CardContent className="p-6 sm:p-12 text-center">
+              <div className="mb-6 sm:mb-8">
+                <div className="flex items-center justify-center gap-2 mb-4 sm:mb-6">
+                  <Trophy className="text-yellow-400 w-8 h-8 sm:w-12 sm:h-12" />
+                  <Star className="text-yellow-400 w-6 h-6 sm:w-8 sm:h-8" />
                 </div>
                 
-                <h1 className="text-4xl font-bold text-purple-800 mb-8 leading-relaxed">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-purple-800 mb-6 sm:mb-8 leading-tight sm:leading-relaxed px-2">
                   🎤 Desafio BTS: Mostre que é um verdadeiro ARMY e ganhe até R$525,00!
                 </h1>
                 
-                <div className="bg-purple-50 p-6 rounded-xl mb-8">
-                  <p className="text-xl text-gray-700 mb-4">
+                <div className="bg-purple-50 p-4 sm:p-6 rounded-xl mb-6 sm:mb-8">
+                  <p className="text-lg sm:text-xl text-gray-700 mb-3 sm:mb-4">
                     Cada pergunta certa vale R$75,00.
                   </p>
-                  <p className="text-xl text-gray-700 mb-4">
+                  <p className="text-lg sm:text-xl text-gray-700 mb-3 sm:mb-4">
                     Acerte todas e saque seu saldo via Pix!
                   </p>
-                  <p className="text-lg text-purple-600 font-semibold">
+                  <p className="text-base sm:text-lg text-purple-600 font-semibold">
                     👉 Toque em COMEÇAR para iniciar o desafio.
                   </p>
                 </div>
                 
                 <Button
                   onClick={handleStartGame}
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-12 py-6 text-2xl h-auto shadow-lg transform hover:scale-105 transition-all duration-300"
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-2xl h-auto shadow-lg transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
                 >
-                  <Play className="w-8 h-8 mr-3" />
+                  <Play className="w-6 h-6 sm:w-8 sm:h-8 mr-2 sm:mr-3" />
                   COMEÇAR AGORA
                 </Button>
               </div>
