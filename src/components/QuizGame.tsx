@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -158,11 +157,11 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
         <Progress value={progress} className="h-1.5" />
       </div>
 
-      {/* Question Card otimizado para reduzir espaçamento */}
-      <Card className="flex-1 border-2 border-purple-300 shadow-2xl flex flex-col min-h-0">
-        <CardContent className="p-3 flex-1 flex flex-col justify-between min-h-0">
-          {/* Seção da pergunta */}
-          <div className="text-center mb-2">
+      {/* Question Card otimizado sem espaço em branco */}
+      <Card className="flex-1 border-2 border-purple-300 shadow-2xl">
+        <CardContent className="p-3 h-full flex flex-col">
+          {/* Pergunta */}
+          <div className="text-center mb-3">
             <div className="text-purple-600 font-semibold text-xs mb-1">
               {motivationalMessages[currentQuestion]}
             </div>
@@ -171,8 +170,8 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
             </h2>
           </div>
 
-          {/* Seção das respostas - agora mais próxima da pergunta */}
-          <div className="space-y-2 mb-2">
+          {/* Respostas - sem espaço extra */}
+          <div className="flex-1 space-y-2">
             {currentQ.options.map((option, index) => (
               <Button
                 key={index}
@@ -211,9 +210,9 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
             ))}
           </div>
 
-          {/* Seção do resultado e botão */}
+          {/* Resultado e botão */}
           {showResult && (
-            <div className="text-center">
+            <div className="mt-3 text-center">
               <div className="mb-2 p-2 rounded-lg bg-purple-50">
                 {selectedAnswer === currentQ.correctAnswer ? (
                   <div className="text-green-600 font-bold text-xs">
