@@ -140,37 +140,37 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
   const currentQ = questions[currentQuestion];
 
   return (
-    <div className="h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-4">
-      {/* Header */}
-      <div className="text-center mb-4">
-        <h1 className="text-2xl font-bold text-white mb-2">💜DESAFIO BTS💜</h1>
-        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-full text-lg font-bold inline-block shadow-lg">
+    <div className="h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-3">
+      {/* Header compacto */}
+      <div className="text-center mb-3">
+        <h1 className="text-xl font-bold text-white mb-2">💜DESAFIO BTS💜</h1>
+        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-1.5 rounded-full text-base font-bold inline-block shadow-lg">
           💰 Saldo: R${score},00
         </div>
       </div>
 
-      {/* Progress */}
-      <div className="mb-4">
-        <div className="flex justify-between text-white text-sm mb-2">
+      {/* Progress compacto */}
+      <div className="mb-3">
+        <div className="flex justify-between text-white text-xs mb-1">
           <span>Pergunta {currentQuestion + 1} de {questions.length}</span>
           <span>{Math.round(progress)}% concluído</span>
         </div>
-        <Progress value={progress} className="h-2" />
+        <Progress value={progress} className="h-1.5" />
       </div>
 
-      {/* Question Card - Flex grow to fill remaining space */}
-      <Card className="flex-1 border-2 border-purple-300 shadow-2xl flex flex-col">
-        <CardContent className="p-4 flex-1 flex flex-col">
-          <div className="text-center mb-4">
-            <div className="text-purple-600 font-semibold text-sm mb-2">
+      {/* Question Card otimizado */}
+      <Card className="flex-1 border-2 border-purple-300 shadow-2xl flex flex-col min-h-0">
+        <CardContent className="p-3 flex-1 flex flex-col min-h-0">
+          <div className="text-center mb-3">
+            <div className="text-purple-600 font-semibold text-xs mb-1">
               {motivationalMessages[currentQuestion]}
             </div>
-            <h2 className="text-lg font-bold text-gray-800 leading-tight">
+            <h2 className="text-base font-bold text-gray-800 leading-tight">
               {currentQ.question}
             </h2>
           </div>
 
-          <div className="flex-1 flex flex-col justify-center space-y-3">
+          <div className="flex-1 flex flex-col justify-center space-y-2 min-h-0">
             {currentQ.options.map((option, index) => (
               <Button
                 key={index}
@@ -185,7 +185,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
                     ? "secondary"
                     : "outline"
                 }
-                className={`w-full p-3 text-left text-sm font-medium h-auto justify-start relative transition-all duration-300 ${
+                className={`w-full p-2.5 text-left text-sm font-medium h-auto justify-start relative transition-all duration-300 ${
                   showResult && index === currentQ.correctAnswer
                     ? 'bg-green-500 hover:bg-green-600 text-white border-green-500'
                     : showResult && selectedAnswer === index && index !== currentQ.correctAnswer
@@ -210,14 +210,14 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
           </div>
 
           {showResult && (
-            <div className="mt-4 text-center">
-              <div className="mb-3 p-3 rounded-lg bg-purple-50">
+            <div className="mt-3 text-center">
+              <div className="mb-2 p-2 rounded-lg bg-purple-50">
                 {selectedAnswer === currentQ.correctAnswer ? (
-                  <div className="text-green-600 font-bold text-sm">
+                  <div className="text-green-600 font-bold text-xs">
                     🎉 Correto! +R$75,00 na sua conta!
                   </div>
                 ) : (
-                  <div className="text-red-600 font-bold text-sm">
+                  <div className="text-red-600 font-bold text-xs">
                     😞 Resposta incorreta, mas continue tentando!
                   </div>
                 )}
@@ -225,7 +225,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
               
               <Button 
                 onClick={handleNext} 
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-6 py-3 text-base"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-4 py-2 text-sm"
               >
                 {currentQuestion < questions.length - 1 ? 'Próxima Pergunta' : 'Ver Resultado Final'}
               </Button>
@@ -234,7 +234,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
         </CardContent>
       </Card>
 
-      {/* Prize info */}
+      {/* Prize info compacto */}
       <div className="text-center text-white/80 text-xs mt-2">
         💡 Acerte pelo menos 3 perguntas para sacar seu prêmio via Pix!
       </div>
