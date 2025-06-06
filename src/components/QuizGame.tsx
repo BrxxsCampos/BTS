@@ -158,7 +158,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
       </div>
 
       {/* Question Card otimizado sem espaço em branco */}
-      <Card className="flex-1 border-2 border-purple-300 shadow-2xl">
+      <Card className="flex-1 border-2 border-purple-100 shadow-2xl">
         <CardContent className="p-3 h-full flex flex-col">
           {/* Pergunta */}
           <div className="text-center mb-3">
