@@ -124,23 +124,23 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
     }
   };
 
-  // Welcome Screen - Otimizada para ocupar toda a tela
+  // Welcome Screen - Ocupando toda a altura da tela
   if (!gameStarted) {
     return (
-      <div className="h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col justify-center items-center p-4">
-        <div className="w-full max-w-sm mx-auto">
+      <div className="h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex items-center justify-center p-3">
+        <div className="w-full max-w-sm">
           <Card className="border-2 border-purple-300 shadow-2xl">
-            <CardContent className="p-6 text-center space-y-6">
+            <CardContent className="p-4 text-center">
               <div className="space-y-4">
-                <h1 className="text-lg sm:text-xl font-bold text-purple-800 leading-tight">
+                <h1 className="text-base sm:text-lg font-bold text-purple-800 leading-tight">
                   🎤 Desafio BTS: Mostre que é um verdadeiro ARMY e ganhe até R$525,00!
                 </h1>
                 
-                <div className="bg-purple-50 p-4 rounded-xl space-y-3">
-                  <p className="text-sm text-gray-700">
+                <div className="bg-purple-50 p-3 rounded-xl space-y-2">
+                  <p className="text-xs sm:text-sm text-gray-700">
                     Cada pergunta certa vale R$75,00.
                   </p>
-                  <p className="text-sm text-gray-700">
+                  <p className="text-xs sm:text-sm text-gray-700">
                     Acerte todas e saque seu saldo via Pix!
                   </p>
                   <p className="text-xs text-purple-600 font-semibold">
@@ -150,7 +150,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
                 
                 <Button 
                   onClick={handleStartGame} 
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-6 py-3 text-base h-auto shadow-lg transform hover:scale-105 transition-all duration-300 w-full"
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 text-sm shadow-lg transform hover:scale-105 transition-all duration-300 w-full"
                 >
                   <Play className="w-4 h-4 mr-2" />
                   COMEÇAR AGORA
@@ -163,46 +163,50 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
     );
   }
 
-  // Quiz Game - Otimizado para ocupar toda a tela
+  // Quiz Game - Otimizado para ocupar toda a tela sem espaços
   const progress = ((currentQuestion + 1) / questions.length) * 100;
   const currentQ = questions[currentQuestion];
 
   return (
-    <div className="h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-4">
-      <div className="flex-1 flex flex-col justify-between max-w-2xl mx-auto w-full">
-        {/* Header */}
-        <div className="text-center pt-4 pb-2">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <h1 className="text-xl sm:text-2xl font-bold text-white">💜DESAFIO BTS💜</h1>
-          </div>
-          <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-full text-lg font-bold inline-block shadow-lg">
+    <div className="h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col">
+      <div className="flex-1 flex flex-col max-w-md mx-auto w-full">
+        {/* Header compacto */}
+        <div className="px-3 py-2 text-center">
+          <h1 className="text-lg font-bold text-white mb-1">💜DESAFIO BTS💜</h1>
+          <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-1 rounded-full text-sm font-bold inline-block shadow-lg">
             💰 Saldo: R${score},00
           </div>
         </div>
 
-        {/* Progress */}
-        <div className="mb-4">
-          <div className="flex justify-between text-white mb-2 text-sm">
-            <span>Pergunta {currentQuestion + 1} de {questions.length}</span>
-            <span>{Math.round(progress)}% concluído</span>
+        {/* Progress compacto */}
+        <div className="px-3 mb-2">
+          <div className="flex justify-between text-white mb-1 text-xs">
+            <span>Pergunta {currentQuestion + 1}/{questions.length}</span>
+            <span>{Math.round(progress)}%</span>
           </div>
-          <Progress value={progress} className="h-2" />
+          <Progress value={progress} className="h-1.5" />
         </div>
 
-        {/* Question Card - Flex grow para ocupar espaço disponível */}
-        <div className="flex-1 flex flex-col">
-          <Card className="border-2 border-purple-300 shadow-2xl flex-1 flex flex-col">
-            <CardContent className="p-4 sm:p-6 flex-1 flex flex-col justify-between">
-              <div className="text-center mb-4">
-                <div className="text-purple-600 font-semibold mb-2 text-sm">
-                  {motivationalMessages[currentQuestion]}
-                </div>
-                <h2 className="text-lg sm:text-xl font-bold text-gray-800 leading-relaxed">
+        {/* Mensagem motivacional */}
+        <div className="px-3 mb-2">
+          <div className="text-center text-purple-200 font-semibold text-xs">
+            {motivationalMessages[currentQuestion]}
+          </div>
+        </div>
+
+        {/* Question Card ocupando o resto da tela */}
+        <div className="flex-1 px-3 pb-3">
+          <Card className="border-2 border-purple-300 shadow-2xl h-full flex flex-col">
+            <CardContent className="p-3 flex-1 flex flex-col">
+              {/* Pergunta */}
+              <div className="text-center mb-3">
+                <h2 className="text-sm sm:text-base font-bold text-gray-800 leading-tight">
                   {currentQ.question}
                 </h2>
               </div>
 
-              <div className="space-y-3 flex-1 flex flex-col justify-center">
+              {/* Opções ocupando o espaço disponível */}
+              <div className="flex-1 flex flex-col justify-center space-y-2">
                 {currentQ.options.map((option, index) => (
                   <Button
                     key={index}
@@ -217,7 +221,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
                         ? "secondary"
                         : "outline"
                     }
-                    className={`w-full p-3 sm:p-4 text-left text-sm sm:text-base font-medium h-auto justify-start relative transition-all duration-300 ${
+                    className={`w-full p-2.5 text-left text-xs sm:text-sm font-medium h-auto justify-start relative transition-all duration-300 ${
                       showResult && index === currentQ.correctAnswer
                         ? 'bg-green-500 hover:bg-green-600 text-white border-green-500'
                         : showResult && selectedAnswer === index && index !== currentQ.correctAnswer
@@ -227,39 +231,40 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
                     onClick={() => handleAnswerSelect(index)}
                     disabled={answered}
                   >
-                    <span className="mr-3 font-bold text-purple-600">
+                    <span className="mr-2 font-bold text-purple-600 text-xs">
                       {String.fromCharCode(65 + index)})
                     </span>
-                    {option}
+                    <span className="flex-1">{option}</span>
                     {showResult && index === currentQ.correctAnswer && (
-                      <CheckCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5" />
+                      <CheckCircle className="w-4 h-4 ml-2" />
                     )}
                     {showResult && selectedAnswer === index && index !== currentQ.correctAnswer && (
-                      <XCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5" />
+                      <XCircle className="w-4 h-4 ml-2" />
                     )}
                   </Button>
                 ))}
               </div>
 
+              {/* Resultado e botão next */}
               {showResult && (
-                <div className="mt-4 text-center">
-                  <div className="mb-4 p-3 rounded-lg bg-purple-50">
+                <div className="mt-3">
+                  <div className="mb-2 p-2 rounded-lg bg-purple-50 text-center">
                     {selectedAnswer === currentQ.correctAnswer ? (
-                      <div className="text-green-600 font-bold text-sm sm:text-base">
-                        🎉 Correto! +R$75,00 na sua conta!
+                      <div className="text-green-600 font-bold text-xs sm:text-sm">
+                        🎉 Correto! +R$75,00
                       </div>
                     ) : (
-                      <div className="text-red-600 font-bold text-sm sm:text-base">
-                        😞 Resposta incorreta, mas continue tentando!
+                      <div className="text-red-600 font-bold text-xs sm:text-sm">
+                        😞 Incorreta, continue!
                       </div>
                     )}
                   </div>
                   
                   <Button
                     onClick={handleNext}
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-6 py-3 text-sm sm:text-base w-full"
+                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-2 text-xs sm:text-sm w-full"
                   >
-                    {currentQuestion < questions.length - 1 ? 'Próxima Pergunta' : 'Ver Resultado Final'}
+                    {currentQuestion < questions.length - 1 ? 'Próxima' : 'Ver Resultado'}
                   </Button>
                 </div>
               )}
@@ -267,9 +272,9 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
           </Card>
         </div>
 
-        {/* Bottom info */}
-        <div className="text-center text-white/80 text-xs pt-2">
-          💡 Acerte pelo menos 3 perguntas para sacar seu prêmio via Pix!
+        {/* Info bottom */}
+        <div className="text-center text-white/80 text-xs px-3 pb-2">
+          💡 Acerte 3+ para sacar via Pix!
         </div>
       </div>
     </div>
