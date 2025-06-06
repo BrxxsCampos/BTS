@@ -158,10 +158,11 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
         <Progress value={progress} className="h-1.5" />
       </div>
 
-      {/* Question Card otimizado */}
+      {/* Question Card otimizado para reduzir espaçamento */}
       <Card className="flex-1 border-2 border-purple-300 shadow-2xl flex flex-col min-h-0">
-        <CardContent className="p-3 flex-1 flex flex-col min-h-0">
-          <div className="text-center mb-3">
+        <CardContent className="p-3 flex-1 flex flex-col justify-between min-h-0">
+          {/* Seção da pergunta */}
+          <div className="text-center mb-2">
             <div className="text-purple-600 font-semibold text-xs mb-1">
               {motivationalMessages[currentQuestion]}
             </div>
@@ -170,7 +171,8 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
             </h2>
           </div>
 
-          <div className="flex-1 flex flex-col justify-center space-y-2 min-h-0">
+          {/* Seção das respostas - agora mais próxima da pergunta */}
+          <div className="space-y-2 mb-2">
             {currentQ.options.map((option, index) => (
               <Button
                 key={index}
@@ -209,8 +211,9 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
             ))}
           </div>
 
+          {/* Seção do resultado e botão */}
           {showResult && (
-            <div className="mt-3 text-center">
+            <div className="text-center">
               <div className="mb-2 p-2 rounded-lg bg-purple-50">
                 {selectedAnswer === currentQ.correctAnswer ? (
                   <div className="text-green-600 font-bold text-xs">
