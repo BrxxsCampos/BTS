@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -139,7 +140,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
   const currentQ = questions[currentQuestion];
 
   return (
-    <div className="h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-3">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-3">
       {/* Header compacto */}
       <div className="text-center mb-3">
         <h1 className="text-xl font-bold text-white mb-2">💜DESAFIO BTS💜</h1>
@@ -157,84 +158,86 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
         <Progress value={progress} className="h-1.5" />
       </div>
 
-      {/* Question Card otimizado sem espaço em branco */}
-      <Card className="flex-1 border-2 border-purple-100 shadow-2xl">
-        <CardContent className="p-3 h-full flex flex-col">
-          {/* Pergunta */}
-          <div className="text-center mb-3">
-            <div className="text-purple-600 font-semibold text-xs mb-1">
-              {motivationalMessages[currentQuestion]}
-            </div>
-            <h2 className="text-base font-bold text-gray-800 leading-tight">
-              {currentQ.question}
-            </h2>
-          </div>
-
-          {/* Respostas - sem espaço extra */}
-          <div className="flex-1 space-y-2">
-            {currentQ.options.map((option, index) => (
-              <Button
-                key={index}
-                variant={
-                  showResult
-                    ? index === currentQ.correctAnswer
-                      ? "default"
-                      : selectedAnswer === index
-                      ? "destructive"
-                      : "outline"
-                    : selectedAnswer === index
-                    ? "secondary"
-                    : "outline"
-                }
-                className={`w-full p-2.5 text-left text-sm font-medium h-auto justify-start relative transition-all duration-300 ${
-                  showResult && index === currentQ.correctAnswer
-                    ? 'bg-green-500 hover:bg-green-600 text-white border-green-500'
-                    : showResult && selectedAnswer === index && index !== currentQ.correctAnswer
-                    ? 'bg-red-500 hover:bg-red-600 text-white border-red-500'
-                    : ''
-                }`}
-                onClick={() => handleAnswerSelect(index)}
-                disabled={answered}
-              >
-                <span className="mr-2 font-bold text-purple-600">
-                  {String.fromCharCode(65 + index)})
-                </span>
-                {option}
-                {showResult && index === currentQ.correctAnswer && (
-                  <CheckCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4" />
-                )}
-                {showResult && selectedAnswer === index && index !== currentQ.correctAnswer && (
-                  <XCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4" />
-                )}
-              </Button>
-            ))}
-          </div>
-
-          {/* Resultado e botão */}
-          {showResult && (
-            <div className="mt-3 text-center">
-              <div className="mb-2 p-2 rounded-lg bg-purple-50">
-                {selectedAnswer === currentQ.correctAnswer ? (
-                  <div className="text-green-600 font-bold text-xs">
-                    🎉 Correto! +R$75,00 na sua conta!
-                  </div>
-                ) : (
-                  <div className="text-red-600 font-bold text-xs">
-                    😞 Resposta incorreta, mas continue tentando!
-                  </div>
-                )}
+      {/* Question Card centralizado e responsivo */}
+      <div className="flex-1 flex items-center justify-center">
+        <Card className="border-2 border-purple-100 shadow-2xl w-full max-w-md mx-auto">
+          <CardContent className="p-4">
+            {/* Pergunta */}
+            <div className="text-center mb-4">
+              <div className="text-purple-600 font-semibold text-xs mb-2">
+                {motivationalMessages[currentQuestion]}
               </div>
-              
-              <Button 
-                onClick={handleNext} 
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-4 py-2 text-sm"
-              >
-                {currentQuestion < questions.length - 1 ? 'Próxima Pergunta' : 'Ver Resultado Final'}
-              </Button>
+              <h2 className="text-base font-bold text-gray-800 leading-tight">
+                {currentQ.question}
+              </h2>
             </div>
-          )}
-        </CardContent>
-      </Card>
+
+            {/* Respostas */}
+            <div className="space-y-2 mb-4">
+              {currentQ.options.map((option, index) => (
+                <Button
+                  key={index}
+                  variant={
+                    showResult
+                      ? index === currentQ.correctAnswer
+                        ? "default"
+                        : selectedAnswer === index
+                        ? "destructive"
+                        : "outline"
+                      : selectedAnswer === index
+                      ? "secondary"
+                      : "outline"
+                  }
+                  className={`w-full p-2.5 text-left text-sm font-medium h-auto justify-start relative transition-all duration-300 ${
+                    showResult && index === currentQ.correctAnswer
+                      ? 'bg-green-500 hover:bg-green-600 text-white border-green-500'
+                      : showResult && selectedAnswer === index && index !== currentQ.correctAnswer
+                      ? 'bg-red-500 hover:bg-red-600 text-white border-red-500'
+                      : ''
+                  }`}
+                  onClick={() => handleAnswerSelect(index)}
+                  disabled={answered}
+                >
+                  <span className="mr-2 font-bold text-purple-600">
+                    {String.fromCharCode(65 + index)})
+                  </span>
+                  {option}
+                  {showResult && index === currentQ.correctAnswer && (
+                    <CheckCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4" />
+                  )}
+                  {showResult && selectedAnswer === index && index !== currentQ.correctAnswer && (
+                    <XCircle className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4" />
+                  )}
+                </Button>
+              ))}
+            </div>
+
+            {/* Resultado e botão */}
+            {showResult && (
+              <div className="text-center">
+                <div className="mb-3 p-2 rounded-lg bg-purple-50">
+                  {selectedAnswer === currentQ.correctAnswer ? (
+                    <div className="text-green-600 font-bold text-xs">
+                      🎉 Correto! +R$75,00 na sua conta!
+                    </div>
+                  ) : (
+                    <div className="text-red-600 font-bold text-xs">
+                      😞 Resposta incorreta, mas continue tentando!
+                    </div>
+                  )}
+                </div>
+                
+                <Button 
+                  onClick={handleNext} 
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-4 py-2 text-sm"
+                >
+                  {currentQuestion < questions.length - 1 ? 'Próxima Pergunta' : 'Ver Resultado Final'}
+                </Button>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
 
       {/* Prize info compacto */}
       <div className="text-center text-white/80 text-xs mt-2">
