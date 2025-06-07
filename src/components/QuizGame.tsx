@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -241,7 +240,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
 
       {/* Prize info compacto */}
       <div className="text-center text-white/80 text-xs mt-2">
-        💡 Acerte pelo menos 3 perguntas para descobrir sua grande recompensa!
+        💡 Acerte pelo menos 3 perguntas para resgatar sua recompensa!
       </div>
     </div>
   );
