@@ -79,7 +79,7 @@ const CaptureForm = ({ score, correctAnswers, onReset }: CaptureFormProps) => {
 
   if (timeLeft === 0) {
     return (
-      <div className="h-screen bg-gradient-to-br from-red-900 via-red-800 to-red-700 flex items-center justify-center p-4">
+      <div className="fixed inset-0 bg-gradient-to-br from-red-900 via-red-800 to-red-700 flex items-center justify-center p-4 overflow-hidden">
         <Card className="max-w-sm mx-auto text-center border-2 border-red-300">
           <CardContent className="p-6">
             <AlertTriangle className="w-12 h-12 text-red-500 mx-auto mb-3" />
@@ -97,11 +97,11 @@ const CaptureForm = ({ score, correctAnswers, onReset }: CaptureFormProps) => {
   }
 
   return (
-    <div className="h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-4">
-      {/* Header com resultado */}
-      <div className="text-center mb-4">
-        <Trophy className="w-12 h-12 text-yellow-400 mx-auto mb-2" />
-        <h1 className="text-2xl font-bold text-white mb-2">
+    <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col overflow-hidden">
+      {/* Header com resultado - fixo no topo */}
+      <div className="flex-shrink-0 text-center p-4 pt-6">
+        <Trophy className="w-10 h-10 text-yellow-400 mx-auto mb-2" />
+        <h1 className="text-xl font-bold text-white mb-2">
           🎉 Parabéns, ARMY!
         </h1>
         
@@ -131,101 +131,108 @@ const CaptureForm = ({ score, correctAnswers, onReset }: CaptureFormProps) => {
       </div>
 
       {canWithdraw ? (
-        <div className="flex-1 flex flex-col space-y-3">
-          {/* Urgência */}
-          <Card className="border-2 border-red-400 bg-red-50">
-            <CardContent className="p-3">
-              <div className="flex items-center gap-2 text-red-600">
-                <Clock className="w-4 h-4" />
-                <div className="text-xs">
-                  <div className="font-bold">⏰ ATENÇÃO! Tempo limitado</div>
-                  <div>
-                    Você tem <span className="font-bold">{formatTime(timeLeft)}</span> para sacar seu prêmio via Pix.
-                    Após esse tempo, seu saldo será zerado!
+        <>
+          {/* Aviso de urgência */}
+          <div className="flex-shrink-0 px-4 pb-2">
+            <Card className="border-2 border-red-400 bg-red-50">
+              <CardContent className="p-3">
+                <div className="flex items-center gap-2 text-red-600">
+                  <Clock className="w-4 h-4 flex-shrink-0" />
+                  <div className="text-xs">
+                    <div className="font-bold">⏰ ATENÇÃO! Tempo limitado</div>
+                    <div>
+                      Você tem <span className="font-bold">{formatTime(timeLeft)}</span> para sacar.
+                      Após esse tempo, seu saldo será zerado!
+                    </div>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
 
-          {/* Formulário */}
-          <Card className="border-2 border-yellow-400 shadow-2xl flex-1 flex flex-col">
-            <CardHeader className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-3">
-              <CardTitle className="text-center text-lg font-bold text-gray-800">
-                💰 Dados para Saque via Pix
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-4 flex-1 flex flex-col">
-              <form onSubmit={handleSubmit} className="flex-1 flex flex-col space-y-3">
-                <div>
-                  <Label htmlFor="name" className="text-sm font-semibold">Nome Completo *</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    type="text"
-                    placeholder="Digite seu nome completo"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="mt-1 text-sm h-10"
-                    required
-                  />
-                </div>
+          {/* Formulário - área flexível */}
+          <div className="flex-1 px-4 pb-4 flex flex-col min-h-0">
+            <Card className="border-2 border-yellow-400 shadow-2xl flex-1 flex flex-col min-h-0">
+              <CardHeader className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-3 flex-shrink-0">
+                <CardTitle className="text-center text-lg font-bold text-gray-800">
+                  💰 Dados para Saque via Pix
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-4 flex-1 flex flex-col min-h-0">
+                <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
+                  <div className="flex-1 space-y-4 min-h-0">
+                    <div>
+                      <Label htmlFor="name" className="text-sm font-semibold">Nome Completo *</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="Digite seu nome completo"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        className="mt-1 text-sm h-12"
+                        required
+                      />
+                    </div>
 
-                <div>
-                  <Label htmlFor="email" className="text-sm font-semibold">E-mail *</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Digite seu melhor e-mail"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="mt-1 text-sm h-10"
-                    required
-                  />
-                </div>
+                    <div>
+                      <Label htmlFor="email" className="text-sm font-semibold">E-mail *</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="Digite seu melhor e-mail"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="mt-1 text-sm h-12"
+                        required
+                      />
+                    </div>
 
-                <div>
-                  <Label htmlFor="pixKey" className="text-sm font-semibold">Chave Pix *</Label>
-                  <Input
-                    id="pixKey"
-                    name="pixKey"
-                    type="text"
-                    placeholder="CPF, e-mail, telefone ou chave aleatória"
-                    value={formData.pixKey}
-                    onChange={handleInputChange}
-                    className="mt-1 text-sm h-10"
-                    required
-                  />
-                </div>
+                    <div>
+                      <Label htmlFor="pixKey" className="text-sm font-semibold">Chave Pix *</Label>
+                      <Input
+                        id="pixKey"
+                        name="pixKey"
+                        type="text"
+                        placeholder="CPF, e-mail, telefone ou chave aleatória"
+                        value={formData.pixKey}
+                        onChange={handleInputChange}
+                        className="mt-1 text-sm h-12"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                <div className="flex-1 flex items-end">
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 text-base h-auto shadow-lg"
-                  >
-                    {isSubmitting ? (
-                      "Processando..."
-                    ) : (
-                      <>
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        SACAR R${score},00 VIA PIX
-                      </>
-                    )}
-                  </Button>
-                </div>
-              </form>
+                  {/* Botão fixo na parte inferior */}
+                  <div className="flex-shrink-0 pt-4">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 text-base shadow-lg"
+                    >
+                      {isSubmitting ? (
+                        "Processando..."
+                      ) : (
+                        <>
+                          <CheckCircle className="w-4 h-4 mr-2" />
+                          SACAR R${score},00 VIA PIX
+                        </>
+                      )}
+                    </Button>
 
-              <div className="mt-3 text-center text-xs text-gray-600">
-                🔒 Seus dados estão seguros conosco.<br />
-                📱 O Pix será enviado em até 24 horas úteis.
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                    <div className="mt-3 text-center text-xs text-gray-600">
+                      🔒 Seus dados estão seguros conosco.<br />
+                      📱 O Pix será enviado em até 24 horas úteis.
+                    </div>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </>
       ) : (
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center px-4">
           <Button 
             onClick={onReset}
             className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-8 py-4 text-lg"
