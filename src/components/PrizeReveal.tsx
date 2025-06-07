@@ -47,7 +47,7 @@ const PrizeReveal = ({
                   🎉 Incrível, ARMY!
                 </h1>
                 <p className="text-gray-700 text-lg mb-3">
-                  Você respondeu <span className="font-bold text-purple-600">{correctAnswers} perguntas</span> e acumulou
+                  Você acertou <span className="font-bold text-purple-600">{correctAnswers} perguntas</span> e acumulou
                 </p>
                 
                 <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-3 rounded-xl shadow-lg mb-4">
