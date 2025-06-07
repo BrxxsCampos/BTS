@@ -16,7 +16,7 @@ interface Question {
 const questions: Question[] = [{
   id: 1,
   question: "🟣 Quem é o líder do BTS?",
-  options: ["V", "Jin", "RM", "Jimin"],
+  options: ["Park JiMin", "Kim Nam-joon", "Jeon JungKook", "Kim SeokJin"],
   correctAnswer: 2
 }, {
   id: 2,
