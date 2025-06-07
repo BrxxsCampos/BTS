@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Gift, Sparkles, Star, Trophy } from 'lucide-react';
+import { Gift, Sparkles, Star, Trophy, Coins } from 'lucide-react';
 
 interface PrizeRevealProps {
   score: number;
@@ -55,9 +55,20 @@ const PrizeReveal = ({ score, correctAnswers, onReveal }: PrizeRevealProps) => {
                 <h1 className="text-2xl font-bold text-purple-800 mb-2">
                   🎉 Incrível, ARMY!
                 </h1>
-                <p className="text-gray-700 text-lg">
-                  Você respondeu <span className="font-bold text-purple-600">{correctAnswers} perguntas</span> e acumulou uma 
-                  <span className="font-bold text-green-600"> GRANDE RECOMPENSA!</span>
+                <p className="text-gray-700 text-lg mb-3">
+                  Você respondeu <span className="font-bold text-purple-600">{correctAnswers} perguntas</span> e acumulou
+                </p>
+                
+                <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-3 rounded-xl shadow-lg mb-4">
+                  <div className="flex items-center justify-center space-x-2">
+                    <Star className="w-6 h-6" />
+                    <p className="text-2xl font-bold">{score} pontos</p>
+                    <Star className="w-6 h-6" />
+                  </div>
+                </div>
+
+                <p className="text-gray-700 text-base">
+                  <span className="font-bold text-green-600">Sua pontuação vale uma GRANDE RECOMPENSA!</span>
                 </p>
               </div>
 
@@ -84,14 +95,14 @@ const PrizeReveal = ({ score, correctAnswers, onReveal }: PrizeRevealProps) => {
                     🎁 Clique na caixa de presente
                   </p>
                   <p className="text-sm text-gray-600">
-                    para descobrir sua recompensa!
+                    para descobrir o valor da sua recompensa!
                   </p>
                 </div>
 
                 {isOpening && (
                   <div className="mt-4 animate-pulse">
                     <p className="text-yellow-600 font-bold">
-                      ✨ Abrindo sua recompensa... ✨
+                      ✨ Convertendo seus pontos... ✨
                     </p>
                   </div>
                 )}
@@ -113,7 +124,9 @@ const PrizeReveal = ({ score, correctAnswers, onReveal }: PrizeRevealProps) => {
                     }}
                   />
                 ))}
-                <Trophy className="w-20 h-20 text-yellow-500 mx-auto relative z-10" />
+                <div className="relative z-10 flex items-center justify-center">
+                  <Coins className="w-20 h-20 text-yellow-500" />
+                </div>
               </div>
 
               <div className="space-y-4">
@@ -121,8 +134,14 @@ const PrizeReveal = ({ score, correctAnswers, onReveal }: PrizeRevealProps) => {
                   PARABÉNS!
                 </h2>
                 
+                <div className="bg-purple-50 p-3 rounded-lg mb-4">
+                  <p className="text-purple-700 text-sm mb-2">
+                    Seus <span className="font-bold">{score} pontos</span> foram convertidos em:
+                  </p>
+                </div>
+
                 <div className="bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-xl shadow-lg animate-bounce">
-                  <p className="text-sm font-medium mb-1">Sua recompensa é:</p>
+                  <p className="text-sm font-medium mb-1">Sua recompensa em dinheiro é:</p>
                   <p className="text-4xl font-bold">R$ {score},00</p>
                 </div>
 

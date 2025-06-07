@@ -82,13 +82,13 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
       setCorrectAnswers(correctAnswers + 1);
       toast({
         title: "✅ Parabéns!",
-        description: `Você ganhou R$75,00. Seu saldo atual é de R$${newScore},00`,
+        description: `Você ganhou 75 pontos! Sua pontuação atual é de ${newScore} pontos`,
         duration: 3000
       });
     } else {
       toast({
         title: "❌ Ops!",
-        description: "Resposta incorreta. Mas não se preocupe, você ainda pode continuar e acumular mais!",
+        description: "Resposta incorreta. Mas não se preocupe, você ainda pode continuar e acumular mais pontos!",
         duration: 3000,
         variant: "destructive"
       });
@@ -116,7 +116,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
             
             <div className="bg-purple-50 p-4 rounded-xl mb-6 space-y-2">
               <p className="text-lg text-gray-700">Participe do nosso Desafio ARMY e mostre que conhece tudo sobre o grupo!</p>
-              <p className="text-lg text-gray-700">A cada resposta certa, você acumula um saldo de recompensa.</p>
+              <p className="text-lg text-gray-700">A cada resposta certa, você acumula pontos para uma grande recompensa.</p>
               <p className="text-base text-purple-600 font-semibold">
                 👉 Toque em COMEÇAR para iniciar o desafio.
               </p>
@@ -144,8 +144,8 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
       {/* Header compacto */}
       <div className="text-center mb-3">
         <h1 className="text-xl font-bold text-white mb-2">💜DESAFIO BTS💜</h1>
-        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-1.5 rounded-full text-base font-bold inline-block shadow-lg">
-          💰 Saldo: R${score},00
+        <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-1.5 rounded-full text-base font-bold inline-block shadow-lg">
+          ⭐ Pontuação: {score} pts
         </div>
       </div>
 
@@ -218,7 +218,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
                 <div className="mb-3 p-2 rounded-lg bg-purple-50">
                   {selectedAnswer === currentQ.correctAnswer ? (
                     <div className="text-green-600 font-bold text-xs">
-                      🎉 Correto! +R$75,00 na sua conta!
+                      🎉 Correto! +75 pontos na sua conta!
                     </div>
                   ) : (
                     <div className="text-red-600 font-bold text-xs">
@@ -241,7 +241,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
 
       {/* Prize info compacto */}
       <div className="text-center text-white/80 text-xs mt-2">
-        💡 Acerte pelo menos 3 perguntas para sacar seu prêmio via Pix!
+        💡 Acerte pelo menos 3 perguntas para descobrir sua grande recompensa!
       </div>
     </div>
   );
