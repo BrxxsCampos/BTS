@@ -61,6 +61,14 @@ const PrizeReveal = ({
                 <p className="text-gray-700 text-base">
                   <span className="font-bold text-green-600 text-center">💜 Você provou que é ARMY de verdade!
               </span>
+                  <p className="text-sm text-gray-600">
+                    Cada resposta foi um passo...
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Cada acerto, uma conquista...
+                  </p>
+                  <span className="font-bold text-green-600 text-center">E agora chegou a sua recompensa merecida.
+              </span>
                 </p>
               </div>
 
@@ -74,7 +82,7 @@ const PrizeReveal = ({
                     🎁 Clique na caixa de presente
                   </p>
                   <p className="text-sm text-gray-600">
-                    para descobrir o valor da sua recompensa!
+                    para descobrir o que só os verdadeiros fãs do BTS conquistam!
                   </p>
                 </div>
 
