@@ -119,12 +119,8 @@ const PrizeReveal = ({
                 </div>
 
                 <div className="bg-purple-50 p-3 rounded-lg">
-                  <p className="text-purple-700 font-semibold text-sm">
-                    💜 Você é um verdadeiro especialista em BTS! 💜
-                  </p>
-                  <p className="text-gray-600 text-xs mt-1">
-                    Agora você pode sacar este valor via Pix!
-                  </p>
+                  <p className="text-purple-700 font-semibold text-sm">💜 Você é uma verdadeira especialista em BTS! 💜</p>
+                  <p className="text-gray-600 text-xs mt-1">Agora você pode sacar sua recompensa via Pix!</p>
                 </div>
 
                 <div className="flex items-center justify-center space-x-1 text-yellow-500 mb-6">
