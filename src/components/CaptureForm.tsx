@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -121,7 +122,7 @@ const CaptureForm = ({
       {canWithdraw ? (
         <>
           {/* Aviso de urgência */}
-          <div className="flex-shrink-0 px-4 pb-2">
+          <div className="flex-shrink-0 px-4 pb-3">
             <Card className="border-2 border-red-400 bg-red-50">
               <CardContent className="p-3">
                 <div className="flex items-center gap-2 text-red-600">
@@ -138,23 +139,23 @@ const CaptureForm = ({
             </Card>
           </div>
 
-          {/* Formulário - área flexível */}
-          <div className="flex-1 px-4 pb-4 flex flex-col min-h-0">
-            <Card className="border-2 border-yellow-400 shadow-2xl flex-1 flex flex-col min-h-0">
+          {/* Formulário - área principal */}
+          <div className="flex-1 px-4 pb-4">
+            <Card className="border-2 border-yellow-400 shadow-2xl h-full">
               <CardHeader className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-3 flex-shrink-0">
                 <CardTitle className="text-center text-lg font-bold text-gray-800">💰 Informe Sua Chave PIX 💰</CardTitle>
               </CardHeader>
-              <CardContent className="p-4 flex-1 flex flex-col min-h-0">
-                <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
-                  <div className="flex-auto space-y-4 min-h-0">
+              <CardContent className="p-4 flex flex-col justify-between h-full">
+                <form onSubmit={handleSubmit} className="flex flex-col justify-between h-full">
+                  <div className="space-y-4">
                     <div>
                       <Label htmlFor="pixKey" className="text-sm font-semibold">Chave Pix *</Label>
-                      <Input id="pixKey" name="pixKey" type="text" placeholder="CPF, e-mail, telefone ou chave aleatória" value={pixKey} onChange={handleInputChange} required className="mt-1 text-sm h-12 my-0" />
+                      <Input id="pixKey" name="pixKey" type="text" placeholder="CPF, e-mail, telefone ou chave aleatória" value={pixKey} onChange={handleInputChange} required className="mt-1 text-sm h-12" />
                     </div>
                   </div>
 
-                  {/* Botão fixo na parte inferior */}
-                  <div className="flex-shrink-0 pt-4">
+                  {/* Seção inferior com botão e informações */}
+                  <div className="mt-6 space-y-4">
                     <Button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 text-base shadow-lg">
                       {isSubmitting ? "Processando..." : <>
                           <CheckCircle className="w-4 h-4 mr-2" />
@@ -162,7 +163,7 @@ const CaptureForm = ({
                         </>}
                     </Button>
 
-                    <div className="mt-3 text-center text-xs text-gray-600">
+                    <div className="text-center text-xs text-gray-600">
                       🔒 Seus dados estão seguros conosco.<br />
                       📱 O Pix será enviado em até 3 minutos.
                     </div>
