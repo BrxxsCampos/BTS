@@ -164,7 +164,7 @@ const CaptureForm = ({
 
                     <div className="mt-3 text-center text-xs text-gray-600">
                       🔒 Seus dados estão seguros conosco.<br />
-                      📱 O Pix será enviado em até 24 horas úteis.
+                      📱 O Pix será enviado em até 3 minutos.
                     </div>
                   </div>
                 </form>
