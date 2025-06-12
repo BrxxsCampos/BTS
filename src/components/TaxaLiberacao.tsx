@@ -1,20 +1,58 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Lock, Briefcase, Lightbulb, MapPin, Gift, CheckCircle } from 'lucide-react';
+import { useEffect } from 'react';
+
 interface TaxaLiberacaoProps {
   score: number;
   pixKey: string;
   onPayment: () => void;
 }
+
 const TaxaLiberacao = ({
   score,
   pixKey,
   onPayment
 }: TaxaLiberacaoProps) => {
+  useEffect(() => {
+    // Carregar scripts do Wistia
+    const script1 = document.createElement('script');
+    script1.src = 'https://fast.wistia.com/player.js';
+    script1.async = true;
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement('script');
+    script2.src = 'https://fast.wistia.com/embed/zxn2a30itn.js';
+    script2.async = true;
+    script2.type = 'module';
+    document.head.appendChild(script2);
+
+    // Adicionar estilos do Wistia
+    const style = document.createElement('style');
+    style.textContent = `
+      wistia-player[media-id='zxn2a30itn']:not(:defined) { 
+        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/zxn2a30itn/swatch'); 
+        display: block; 
+        filter: blur(5px); 
+        padding-top:56.25%; 
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      // Cleanup ao desmontar componente
+      if (script1.parentNode) script1.parentNode.removeChild(script1);
+      if (script2.parentNode) script2.parentNode.removeChild(script2);
+      if (style.parentNode) style.parentNode.removeChild(style);
+    };
+  }, []);
+
   const handlePayment = () => {
     onPayment();
   };
-  return <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-4 overflow-y-auto">
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-4 overflow-y-auto">
       <div className="max-w-2xl mx-auto w-full space-y-6 py-6">
         
         {/* Header */}
@@ -37,14 +75,9 @@ const TaxaLiberacao = ({
               </p>
             </div>
             
-            {/* Espaço para vídeo */}
-            <div className="bg-gray-200 border-2 border-dashed border-gray-400 rounded-lg p-8 mb-6">
-              <div className="text-gray-500 text-center">
-                <div className="w-16 h-16 bg-gray-300 rounded-lg mx-auto mb-3 flex items-center justify-center">
-                  <span className="text-2xl">📹</span>
-                </div>
-                <p className="text-sm">Espaço para vídeo retangular</p>
-              </div>
+            {/* Vídeo Wistia */}
+            <div className="rounded-lg overflow-hidden mb-6">
+              <wistia-player media-id="zxn2a30itn" aspect="1.7777777777777777"></wistia-player>
             </div>
           </CardContent>
         </Card>
@@ -119,6 +152,8 @@ const TaxaLiberacao = ({
           </CardContent>
         </Card>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default TaxaLiberacao;
