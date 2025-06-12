@@ -1,21 +1,20 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Lock, Briefcase, Lightbulb, MapPin, Gift, CheckCircle } from 'lucide-react';
-
 interface TaxaLiberacaoProps {
   score: number;
   pixKey: string;
   onPayment: () => void;
 }
-
-const TaxaLiberacao = ({ score, pixKey, onPayment }: TaxaLiberacaoProps) => {
+const TaxaLiberacao = ({
+  score,
+  pixKey,
+  onPayment
+}: TaxaLiberacaoProps) => {
   const handlePayment = () => {
     onPayment();
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-4 overflow-y-auto">
+  return <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-4 overflow-y-auto">
       <div className="max-w-2xl mx-auto w-full space-y-6 py-6">
         
         {/* Header */}
@@ -79,9 +78,7 @@ const TaxaLiberacao = ({ score, pixKey, onPayment }: TaxaLiberacaoProps) => {
                 <Lightbulb className="w-5 h-5 text-yellow-600 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-yellow-800 text-sm mb-1">💡 Importante:</p>
-                  <p className="text-yellow-700 text-sm">
-                    Após o pagamento, sua chave Pix será vinculada automaticamente ao seu saldo e o valor será transferido em até 5 minutos.
-                  </p>
+                  <p className="text-yellow-700 text-sm">Após o pagamento, sua chave Pix será vinculada automaticamente ao seu saldo e o valor será transferido em até 3 minutos.</p>
                 </div>
               </div>
             </div>
@@ -109,12 +106,7 @@ const TaxaLiberacao = ({ score, pixKey, onPayment }: TaxaLiberacaoProps) => {
         {/* Botão de Pagamento */}
         <Card className="border-2 border-green-400 shadow-xl">
           <CardContent className="p-6">
-            <Button 
-              onClick={handlePayment}
-              className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 text-lg shadow-lg mb-4"
-            >
-              PAGAR R$29,90 E SACAR MEU PRÊMIO
-            </Button>
+            <Button onClick={handlePayment} className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 text-lg shadow-lg mb-4 text-center">LIBERAR O SAQUE AGORA</Button>
             
             <div className="text-center text-sm text-gray-600 mb-4">
               🔐 Pagamento 100% seguro com proteção antifraude
@@ -123,16 +115,12 @@ const TaxaLiberacao = ({ score, pixKey, onPayment }: TaxaLiberacaoProps) => {
             <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
               <div className="flex items-center justify-center space-x-2">
                 <CheckCircle className="w-4 h-4 text-green-600" />
-                <p className="text-green-700 text-sm font-medium">
-                  ✅ Prova social (+24.836 saques realizados com sucesso)
-                </p>
+                <p className="text-green-700 text-sm font-medium">Você não está sozinha: 23 ARMYs já resgataram sua recompensa hoje!</p>
               </div>
             </div>
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default TaxaLiberacao;
