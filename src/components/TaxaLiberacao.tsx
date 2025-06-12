@@ -20,12 +20,10 @@ const TaxaLiberacao = ({
         {/* Header */}
         <Card className="border-2 border-yellow-400 shadow-2xl">
           <CardHeader className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-4">
-            <CardTitle className="text-center text-xl font-bold text-gray-800">
-              💰 Solicitação de Taxa de Liberação (R$29,90)
-            </CardTitle>
+            <CardTitle className="text-center text-xl font-bold text-gray-800">LIBERAÇÃO DE SAQUE</CardTitle>
           </CardHeader>
           <CardContent className="p-6 text-center">
-            <h2 className="text-2xl font-bold text-purple-800 mb-4">
+            <h2 className="font-bold text-purple-800 mb-4 text-xl">
               🎉 Parabéns novamente!
             </h2>
             
