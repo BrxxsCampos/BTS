@@ -28,12 +28,12 @@ const TaxaLiberacao = ({
             </h2>
             
             <p className="text-gray-700 text-lg mb-4">
-              Seu saldo de <span className="font-bold text-green-600">R${score},00</span> está pronto para ser liberado via Pix.
+              Seu saldo de <span className="font-bold text-green-600">R${score},00</span> está pronto para ser resgatado via Pix.
             </p>
             
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
               <p className="text-blue-800 text-sm">
-                ✅ Mas, por motivos de segurança e validação de identidade, é necessário o pagamento de uma pequena taxa única de <span className="font-bold">R$29,90</span>.
+                ✅ Mas, por motivos de segurança e validação de identidade, é necessário o pagamento de uma pequena taxa única de <span className="font-bold">R$29,90</span>. Esse valor será devolvido junto com o deposito da sua recompensa.
               </p>
             </div>
             
