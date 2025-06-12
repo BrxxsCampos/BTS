@@ -109,12 +109,12 @@ const PrizeReveal = ({
                 
                 <div className="bg-purple-50 p-3 rounded-lg mb-4">
                   <p className="text-purple-700 text-sm mb-2">
-                    Seus <span className="font-bold">{score} pontos</span> foram convertidos em:
+                    Sua recompensa de <span className="font-bold">{score} pontos</span> foram convertidos em:
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-xl shadow-lg animate-bounce">
-                  <p className="text-sm font-medium mb-1">Sua recompensa em dinheiro é:</p>
+                  <p className="text-sm font-medium mb-1">Saldo Real</p>
                   <p className="text-4xl font-bold">R$ {score},00</p>
                 </div>
 
