@@ -1,9 +1,8 @@
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { CheckCircle, XCircle, Trophy, Star, Play } from 'lucide-react';
-import { toast } from '@/hooks/use-toast';
+import { CheckCircle, XCircle, Trophy, Star, Play, Heart } from 'lucide-react';
 
 interface Question {
   id: number;
@@ -63,6 +62,7 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [answered, setAnswered] = useState(false);
+  const [scoreFlashing, setScoreFlashing] = useState(false);
 
   const handleStartGame = () => {
     setGameStarted(true);
@@ -79,18 +79,10 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
       const newScore = score + 75;
       setScore(newScore);
       setCorrectAnswers(correctAnswers + 1);
-      toast({
-        title: "✅ Parabéns!",
-        description: `Você ganhou 75 pontos! Sua pontuação atual é de ${newScore} pontos`,
-        duration: 3000
-      });
-    } else {
-      toast({
-        title: "❌ Ops!",
-        description: "Resposta incorreta. Mas não se preocupe, você ainda pode continuar e acumular mais pontos!",
-        duration: 3000,
-        variant: "destructive"
-      });
+      
+      // Trigger flashing effect
+      setScoreFlashing(true);
+      setTimeout(() => setScoreFlashing(false), 1000);
     }
   };
 
@@ -135,26 +127,38 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
   }
 
   // Quiz Game
-  const progress = (currentQuestion + 1) / questions.length * 100;
   const currentQ = questions[currentQuestion];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-3">
       {/* Header compacto */}
       <div className="text-center mb-3">
-        <h1 className="text-xl font-bold text-white mb-2">💜DESAFIO BTS💜</h1>
-        <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-1.5 rounded-full text-base font-bold inline-block shadow-lg">
+        <h1 className="text-xl font-bold text-white mb-3">💜DESAFIO BTS💜</h1>
+        <div className={`bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-1.5 rounded-full text-base font-bold inline-block shadow-lg transition-all duration-300 ${scoreFlashing ? 'animate-pulse scale-110 bg-gradient-to-r from-yellow-500 to-yellow-600' : ''}`}>
           ⭐ Pontuação: {score} pts
         </div>
       </div>
 
-      {/* Progress compacto */}
-      <div className="mb-3">
-        <div className="flex justify-between text-white text-xs mb-1">
+      {/* Progress com corações roxos */}
+      <div className="mb-4">
+        <div className="flex justify-between text-white text-xs mb-2">
           <span>Pergunta {currentQuestion + 1} de {questions.length}</span>
-          <span>{Math.round(progress)}% concluído</span>
+          <span>{correctAnswers} acertos</span>
         </div>
-        <Progress value={progress} className="h-1.5" />
+        <div className="flex justify-center space-x-2">
+          {questions.map((_, index) => (
+            <Heart 
+              key={index}
+              className={`w-6 h-6 transition-all duration-300 ${
+                index < currentQuestion 
+                  ? 'text-purple-400 fill-purple-400' 
+                  : index === currentQuestion 
+                  ? 'text-purple-300 fill-purple-300 animate-pulse' 
+                  : 'text-purple-600 fill-none'
+              }`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Question Card centralizado e responsivo */}
