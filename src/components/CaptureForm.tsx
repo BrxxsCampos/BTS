@@ -14,11 +14,7 @@ interface CaptureFormProps {
 }
 
 const CaptureForm = ({ score, correctAnswers, onReset }: CaptureFormProps) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    pixKey: ''
-  });
+  const [pixKey, setPixKey] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutos em segundos
 
@@ -44,19 +40,16 @@ const CaptureForm = ({ score, correctAnswers, onReset }: CaptureFormProps) => {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setPixKey(e.target.value);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.email || !formData.pixKey) {
+    if (!pixKey) {
       toast({
-        title: "Campos obrigatórios",
-        description: "Por favor, preencha todos os campos para sacar seu prêmio!",
+        title: "Campo obrigatório",
+        description: "Por favor, preencha sua chave Pix para sacar seu prêmio!",
         variant: "destructive"
       });
       return;
@@ -162,41 +155,13 @@ const CaptureForm = ({ score, correctAnswers, onReset }: CaptureFormProps) => {
                 <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
                   <div className="flex-1 space-y-4 min-h-0">
                     <div>
-                      <Label htmlFor="name" className="text-sm font-semibold">Nome Completo *</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        placeholder="Digite seu nome completo"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        className="mt-1 text-sm h-12"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="email" className="text-sm font-semibold">E-mail *</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="Digite seu melhor e-mail"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="mt-1 text-sm h-12"
-                        required
-                      />
-                    </div>
-
-                    <div>
                       <Label htmlFor="pixKey" className="text-sm font-semibold">Chave Pix *</Label>
                       <Input
                         id="pixKey"
                         name="pixKey"
                         type="text"
                         placeholder="CPF, e-mail, telefone ou chave aleatória"
-                        value={formData.pixKey}
+                        value={pixKey}
                         onChange={handleInputChange}
                         className="mt-1 text-sm h-12"
                         required
