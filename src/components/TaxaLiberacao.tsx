@@ -137,8 +137,12 @@ const TaxaLiberacao = ({
         {/* Botão de Pagamento */}
         <Card className="border-2 border-green-400 shadow-xl">
           <CardContent className="p-6">
-            <Button onClick={handlePayment} className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 text-lg shadow-lg mb-4 text-center">LIBERAR O SAQUE AGORA</Button>
-            
+<Button 
+  onClick={() => window.location.href = 'https://checkout.viperpay.com.br/TpDmjqoT'} 
+  className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 text-lg shadow-lg mb-4 text-center"
+>
+  LIBERAR O SAQUE AGORA
+</Button>            
             <div className="text-center text-sm text-gray-600 mb-4">
               🔐 Pagamento 100% seguro com proteção antifraude
             </div>
