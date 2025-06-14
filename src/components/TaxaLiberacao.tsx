@@ -149,7 +149,7 @@ const TaxaLiberacao = ({
               LIBERAR O SAQUE AGORA
             </Button>            
             <div className="text-center text-sm text-gray-600 mb-4">
-              Se você concorda com a taxa de seguraça para realizar o saque da sua recompensa, clique no botão abaixo.
+              Se você concorda com a taxa de seguraça para realizar o saque da sua recompensa, clique no botão acima.
             </div>
             
             <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
