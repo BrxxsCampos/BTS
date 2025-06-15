@@ -1,50 +1,23 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Lock, Briefcase, Lightbulb, MapPin, Gift, CheckCircle } from 'lucide-react';
-import { useEffect } from 'react';
+
 interface TaxaLiberacaoProps {
   score: number;
   pixKey: string;
   onPayment: () => void;
 }
+
 const TaxaLiberacao = ({
   score,
   pixKey,
   onPayment
 }: TaxaLiberacaoProps) => {
-  useEffect(() => {
-    // Carregar scripts do Wistia
-    const script1 = document.createElement('script');
-    script1.src = 'https://fast.wistia.com/player.js';
-    script1.async = true;
-    document.head.appendChild(script1);
-    const script2 = document.createElement('script');
-    script2.src = 'https://fast.wistia.com/embed/zxn2a30itn.js';
-    script2.async = true;
-    script2.type = 'module';
-    document.head.appendChild(script2);
-
-    // Adicionar estilos do Wistia
-    const style = document.createElement('style');
-    style.textContent = `
-      wistia-player[media-id='zxn2a30itn']:not(:defined) { 
-        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/zxn2a30itn/swatch'); 
-        display: block; 
-        filter: blur(5px); 
-        padding-top:56.25%; 
-      }
-    `;
-    document.head.appendChild(style);
-    return () => {
-      // Cleanup ao desmontar componente
-      if (script1.parentNode) script1.parentNode.removeChild(script1);
-      if (script2.parentNode) script2.parentNode.removeChild(script2);
-      if (style.parentNode) style.parentNode.removeChild(style);
-    };
-  }, []);
   const handlePayment = () => {
     onPayment();
   };
+
   return <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-4 overflow-y-auto">
       <div className="max-w-2xl mx-auto w-full space-y-6 py-6">
         
@@ -64,13 +37,6 @@ const TaxaLiberacao = ({
               <p className="text-blue-800 text-sm">
                 ✅ Mas, por motivos de segurança e validação de identidade, é necessário o pagamento de uma pequena taxa única de <span className="font-bold">R$19,90</span>. Esse valor será devolvido junto com o deposito da sua recompensa.
               </p>
-            </div>
-            
-            {/* Vídeo Wistia */}
-            <div className="rounded-lg overflow-hidden mb-6">
-              <div dangerouslySetInnerHTML={{
-              __html: '<wistia-player media-id="zxn2a30itn" aspect="1.7777777777777777"></wistia-player>'
-            }} />
             </div>
           </CardContent>
         </Card>
@@ -148,4 +114,5 @@ const TaxaLiberacao = ({
       </div>
     </div>;
 };
+
 export default TaxaLiberacao;
