@@ -103,6 +103,15 @@ const QuizGame = ({ onComplete }: QuizGameProps) => {
       <div className="h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex items-center justify-center p-4">
         <Card className="border-2 border-purple-300 shadow-2xl w-full max-w-md">
           <CardContent className="p-6 text-center flex flex-col justify-center">
+            {/* Logo */}
+            <div className="mb-6">
+              <img 
+                src="/lovable-uploads/a3cf91dd-c607-42d5-997e-078d443d5b41.png" 
+                alt="Clube Army Logo" 
+                className="mx-auto max-w-full h-auto max-h-20 object-contain"
+              />
+            </div>
+            
             <h1 className="text-2xl font-bold text-purple-800 mb-4 leading-tight">💜 Você é fã de verdade do BTS?</h1>
             
             <div className="bg-purple-50 p-4 rounded-xl mb-6 space-y-2">
