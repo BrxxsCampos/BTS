@@ -1,15 +1,12 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Lock, Briefcase, Lightbulb, MapPin, Gift, CheckCircle } from 'lucide-react';
 import { useEffect } from 'react';
-
 interface TaxaLiberacaoProps {
   score: number;
   pixKey: string;
   onPayment: () => void;
 }
-
 const TaxaLiberacao = ({
   score,
   pixKey,
@@ -21,7 +18,6 @@ const TaxaLiberacao = ({
     script1.src = 'https://fast.wistia.com/player.js';
     script1.async = true;
     document.head.appendChild(script1);
-
     const script2 = document.createElement('script');
     script2.src = 'https://fast.wistia.com/embed/zxn2a30itn.js';
     script2.async = true;
@@ -39,7 +35,6 @@ const TaxaLiberacao = ({
       }
     `;
     document.head.appendChild(style);
-
     return () => {
       // Cleanup ao desmontar componente
       if (script1.parentNode) script1.parentNode.removeChild(script1);
@@ -47,24 +42,19 @@ const TaxaLiberacao = ({
       if (style.parentNode) style.parentNode.removeChild(style);
     };
   }, []);
-
   const handlePayment = () => {
     onPayment();
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-4 overflow-y-auto">
+  return <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-pink-800 flex flex-col p-4 overflow-y-auto">
       <div className="max-w-2xl mx-auto w-full space-y-6 py-6">
         
         {/* Header */}
         <Card className="border-2 border-yellow-400 shadow-2xl">
           <CardHeader className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-4">
-            <CardTitle className="text-center text-xl font-bold text-gray-800">LIBERAÇÃO DE SAQUE</CardTitle>
+            <CardTitle className="text-center text-xl font-bold text-gray-800">🚨ATENÇÃO🚨</CardTitle>
           </CardHeader>
           <CardContent className="p-6 text-center">
-            <h2 className="font-bold text-purple-800 mb-4 text-xl">
-              🎉 Parabéns novamente!
-            </h2>
+            <h2 className="font-bold text-purple-800 mb-4 text-xl">ÚLTIMA ETAPA</h2>
             
             <p className="text-gray-700 text-lg mb-4">
               Seu saldo de <span className="font-bold text-green-600">R${score},00</span> está pronto para ser resgatado via Pix.
@@ -78,11 +68,9 @@ const TaxaLiberacao = ({
             
             {/* Vídeo Wistia */}
             <div className="rounded-lg overflow-hidden mb-6">
-              <div 
-                dangerouslySetInnerHTML={{
-                  __html: '<wistia-player media-id="zxn2a30itn" aspect="1.7777777777777777"></wistia-player>'
-                }}
-              />
+              <div dangerouslySetInnerHTML={{
+              __html: '<wistia-player media-id="zxn2a30itn" aspect="1.7777777777777777"></wistia-player>'
+            }} />
             </div>
           </CardContent>
         </Card>
@@ -142,10 +130,7 @@ const TaxaLiberacao = ({
         {/* Botão de Pagamento */}
         <Card className="border-2 border-green-400 shadow-xl">
           <CardContent className="p-6">
-            <Button 
-              onClick={() => window.location.href = 'https://checkout.viperpay.com.br/TpDmjqoT'} 
-              className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 text-lg shadow-lg mb-4 text-center"
-            >
+            <Button onClick={() => window.location.href = 'https://checkout.viperpay.com.br/TpDmjqoT'} className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 text-lg shadow-lg mb-4 text-center">
               LIBERAR O SAQUE AGORA
             </Button>            
             <div className="text-center text-sm text-gray-600 mb-4">
@@ -161,8 +146,6 @@ const TaxaLiberacao = ({
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default TaxaLiberacao;
