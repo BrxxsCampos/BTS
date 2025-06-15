@@ -72,7 +72,7 @@ const TaxaLiberacao = ({
             
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
               <p className="text-blue-800 text-sm">
-                ✅ Mas, por motivos de segurança e validação de identidade, é necessário o pagamento de uma pequena taxa única de <span className="font-bold">R$29,90</span>. Esse valor será devolvido junto com o deposito da sua recompensa.
+                ✅ Mas, por motivos de segurança e validação de identidade, é necessário o pagamento de uma pequena taxa única de <span className="font-bold">R$19,90</span>. Esse valor será devolvido junto com o deposito da sua recompensa.
               </p>
             </div>
             
@@ -132,7 +132,7 @@ const TaxaLiberacao = ({
               <div className="flex items-start space-x-2">
                 <Gift className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                 <p className="text-green-800 text-sm font-medium">
-                  🎁 Você chegou até aqui com mérito. Agora é só confirmar sua identidade e aproveitar o que conquistou!
+                  🎁 Você chegou até aqui com mérito. Agora é só confirmar sua identidade e receber seu premio!
                 </p>
               </div>
             </div>
@@ -149,7 +149,7 @@ const TaxaLiberacao = ({
               LIBERAR O SAQUE AGORA
             </Button>            
             <div className="text-center text-sm text-gray-600 mb-4">
-              Se você concorda com a taxa de seguraça para realizar o saque da sua recompensa, clique no botão acima.
+              Clique no botão acima para continuar seu saque.
             </div>
             
             <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
