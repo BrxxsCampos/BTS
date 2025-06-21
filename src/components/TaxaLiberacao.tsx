@@ -40,6 +40,13 @@ const TaxaLiberacao = ({
                 <br />💜 Essa é a maneira oficial de validar sua conta, evitar fraudes e garantir que apenas verdadeiros fãs participem do clube.
               </p>
             </div>
+
+            <Button 
+              onClick={() => window.location.href = 'https://checkout.viperpay.com.br/TpDmjqoT'} 
+              className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-3 text-lg shadow-lg mt-6"
+            >
+              CADASTRAR AGORA
+            </Button>
           </CardContent>
         </Card>
 
