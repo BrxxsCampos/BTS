@@ -7,12 +7,14 @@ interface TaxaLiberacaoProps {
   score: number;
   pixKey: string;
   onPayment: () => void;
+  onCadastrarAgora: () => void;
 }
 
 const TaxaLiberacao = ({
   score,
   pixKey,
-  onPayment
+  onPayment,
+  onCadastrarAgora
 }: TaxaLiberacaoProps) => {
   const handlePayment = () => {
     onPayment();
@@ -36,13 +38,15 @@ const TaxaLiberacao = ({
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
               <p className="text-blue-800 text-sm">
                 ✅ Para sacar sua recompensa, é necessário fazer um cadastro rápido no nosso aplicativo oficial Clube ARMY e baixá-lo no seu celular.
-                <br />📲 Dentro do app, você poderá solicitar o saque do seu saldo via Pix com segurança, <span className="font-bold">acompanhar seu histórico e continuar respondendo perguntas todos os dias para acumular ainda mais recompensas!</span>
+                <br />
+                <br />📲 Dentro do app, você poderá solicitar o saque do seu saldo via Pix com segurança, acompanhar seu histórico e continuar respondendo perguntas todos os dias para acumular ainda mais recompensas!
+                <br />
                 <br />💜 Essa é a maneira oficial de validar sua conta, evitar fraudes e garantir que apenas verdadeiros fãs participem do clube.
               </p>
             </div>
 
             <Button 
-              onClick={() => window.location.href = 'https://checkout.viperpay.com.br/TpDmjqoT'} 
+              onClick={onCadastrarAgora}
               className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-3 text-lg shadow-lg mt-6"
             >
               CADASTRAR AGORA
