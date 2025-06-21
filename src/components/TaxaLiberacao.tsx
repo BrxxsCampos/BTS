@@ -36,8 +36,8 @@ const TaxaLiberacao = ({
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
               <p className="text-blue-800 text-sm">
                 ✅ Para sacar sua recompensa, é necessário fazer um cadastro rápido no nosso aplicativo oficial Clube ARMY e baixá-lo no seu celular.
-                📲 Dentro do app, você poderá solicitar o saque do seu saldo via Pix com segurança, <span className="font-bold">acompanhar seu histórico e continuar respondendo perguntas todos os dias para acumular ainda mais recompensas!</span>
-                💜 Essa é a maneira oficial de validar sua conta, evitar fraudes e garantir que apenas verdadeiros fãs participem do clube.
+                <br />📲 Dentro do app, você poderá solicitar o saque do seu saldo via Pix com segurança, <span className="font-bold">acompanhar seu histórico e continuar respondendo perguntas todos os dias para acumular ainda mais recompensas!</span>
+                <br />💜 Essa é a maneira oficial de validar sua conta, evitar fraudes e garantir que apenas verdadeiros fãs participem do clube.
               </p>
             </div>
           </CardContent>
